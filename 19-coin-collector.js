@@ -25,8 +25,38 @@ Example 3:
 
 ***********************************************************************/
 
-// your code here
+const coinCollector = num => {
+  let needed = num;
+  let coins = [];
 
+  return coin => {
+
+    if (needed > 0) {
+      coins.push(coin);
+      needed--;
+    }
+
+    if (needed === 0) {return coins}
+  }
+}
+
+
+
+//Example 1:
+  let oneCoin = coinCollector(1); // returns a function
+  console.log(oneCoin(10)); // prints [10]
+
+//Example 2:
+  let twoCoins = coinCollector(2); // returns a function
+  twoCoins(25); // returns a function
+  console.log(twoCoins(10)); // prints [25, 10]
+
+//Example 3:
+  let threeCoins = coinCollector(3); // returns a function
+  console.log(threeCoins)
+  console.log(threeCoins(25)); // returns a function
+  console.log(threeCoins(5)); // returns a function
+  console.log(threeCoins(10)); // prints [ 25, 5, 10 ]
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
 try {

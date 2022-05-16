@@ -42,8 +42,40 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
   be useful
 ***********************************************************************/
 
-// your code here
+const curriedSum = num => {
+  let numArr = [];
 
+  const sumFunc = n => {
+    if (numArr.length < num) {numArr.push(n);}
+
+    if (numArr.length === num) {
+      let sum = 0;
+
+      numArr.forEach( el => { sum += el })
+
+      return sum;
+    } else {
+      return sumFunc;
+    }
+  }
+
+  return sumFunc;
+}
+
+
+
+// 1
+let sum = curriedSum(4); // returns a function
+console.log(sum(5)) // returns a function
+console.log(sum(20)) // returns a function
+console.log(sum(30)) // returns a function
+console.log(sum(20)); // => returns 75
+
+// 2
+// this function can also be invoked like this:
+console.log("---------------------------")
+let sum2 = curriedSum(3)(2)(1)(7); // => returns 10
+console.log(sum2);
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
 try {
